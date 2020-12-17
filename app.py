@@ -15,7 +15,7 @@ PORT = 8000
 # Initialize an instance of the Flask class.
 # This starts the website! Restored
 app = Flask(__name__)
-
+CORS(app)
 app.secret_key = "asdfasdfasdfasdfasdfasdf"
 login_manager.init_app(app)
 
@@ -44,7 +44,7 @@ def before_request():
 
 @app.after_request
 def after_request(response):
-  """Close the db connection after each requewst."""
+  """Close the db connection after each request."""
   g.db.close()
   return response
 
