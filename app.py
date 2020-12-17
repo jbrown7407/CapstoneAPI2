@@ -18,6 +18,17 @@ app = Flask(__name__)
 app.secret_key = "asdfasdfasdfasdfasdfasdf"
 login_manager.init_app(app)
 
+
+if 'ON_HEROKU' in os.environ: # later we will manually add this env var 
+          print('\non heroku!')
+  models.initialize()                      # in heroku so we can write this code
+  DATABASE = connect(os.environ.get('DATABASE_URL')) # heroku will add this 
+                                                     # env var for you 
+                                                     # when you provision the
+                                                     # Heroku Postgres Add-on
+else:
+  DATABASE = SqliteDatabase('meals.sqlite')
+
 @login_manager.user_loader
 def load_user(userid):
   try:
