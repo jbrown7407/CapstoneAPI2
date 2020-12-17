@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, g
 from flask_cors import CORS
 from flask_login import LoginManager
+import os
 
 import models
 from resources.meals import meal
@@ -19,15 +20,13 @@ app.secret_key = "asdfasdfasdfasdfasdfasdf"
 login_manager.init_app(app)
 
 
-if 'ON_HEROKU' in os.environ: # later we will manually add this env var 
+if 'ON_HEROKU' in os.environ:
           print('\non heroku!')
-  models.initialize()                      # in heroku so we can write this code
-  DATABASE = connect(os.environ.get('DATABASE_URL')) # heroku will add this 
-                                                     # env var for you 
-                                                     # when you provision the
-                                                     # Heroku Postgres Add-on
-else:
-  DATABASE = SqliteDatabase('meals.sqlite')
+          models.initialize()                     
+          # DATABASE = connect(os.environ.get('DATABASE_URL')) 
+                                                  
+# else:
+#   DATABASE = PostgresqlDatabase('meals.sqlite')
 
 @login_manager.user_loader
 def load_user(userid):
