@@ -17,6 +17,7 @@ PORT = 8000
 app = Flask(__name__)
 CORS(app)
 Access-Control-Allow-Origin: 'https://dinnder-react.herokuapp.com'
+Vary: Origin
 app.secret_key = "asdfasdfasdfasdfasdfasdf"
 login_manager.init_app(app)
 
