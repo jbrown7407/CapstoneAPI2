@@ -12,7 +12,6 @@ class User(UserMixin, Model):
     password = CharField()
     favorites = CharField()
     #favorites needs to be an array
-
     class Meta:
         database = DATABASE
 #issue here with number field??

@@ -54,6 +54,10 @@ def index():
 def hello(username):
   return "Hello {}".format(username)
 
+# @app.route('/post/<int:post_id>')
+# def show_post(post_id);
+# show post with given id, return post %d
+
 # Run the app when the program starts!
 if __name__ == '__main__':
   models.initialize()
