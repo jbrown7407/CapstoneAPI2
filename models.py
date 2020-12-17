@@ -6,14 +6,7 @@ import os
 from playhouse.db_url import connect
 
 DATABASE = PostgresqlDatabase('meals')
-if 'ON_HEROKU' in os.environ: # later we will manually add this env var 
-                              # in heroku so we can write this code
-  DATABASE = connect(os.environ.get('DATABASE_URL')) # heroku will add this 
-                                                     # env var for you 
-                                                     # when you provision the
-                                                     # Heroku Postgres Add-on
-else:
-  DATABASE = SqliteDatabase('meals.sqlite')
+
 #acccessingg correct DB?
 
 class User(UserMixin, Model):
