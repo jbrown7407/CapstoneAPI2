@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, g
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_login import LoginManager
 import os
 
@@ -64,6 +64,7 @@ app.register_blueprint(user, url_prefix='/user')
 
 # The default URL ends in / ("website-url/").
 @app.route('/')
+@cross_origin()
 def index():
   my_list = ["Hey", "check", "this", "out"]
   return my_list[0]
