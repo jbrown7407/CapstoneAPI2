@@ -48,7 +48,7 @@ def after_request(response):
 
 CORS(meal, origins=['*'], supports_credentials=True)
 CORS(user, origins=['*'], supports_credentials=True)
-CORS(app, origins=['http://localhost:3000', 'https://dinnder-api.herokuapp.com/api/v1/meals' 'https://dinnder-react.herokuapp.com'], supports_credentials=True)
+CORS(app, origins=['*'], supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={
     r'/*': {

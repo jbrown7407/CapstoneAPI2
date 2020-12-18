@@ -6,7 +6,7 @@ import os
 from playhouse.db_url import connect
 
 if 'ON_HEROKU' in os.environ:
-    DATABASE = connect(os.eviron.get('HEROKU_POSTGRESQL_RED_URL'))
+    DATABASE = connect(os.environ.get('HEROKU_POSTGRESQL_RED_URL'))
 else:
   
     # DATABASE = PostgresqlDatabase('meals.sqlite')
