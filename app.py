@@ -55,8 +55,8 @@ def after_request(response):
   g.db.close()
   return response
 
-CORS(meal, origins='*', supports_credentials=True)
-CORS(user, origins='*', supports_credentials=True)
+CORS(meal, origins=['*'], supports_credentials=True)
+CORS(user, origins=['*'], supports_credentials=True)
 
 app.register_blueprint(meal, url_prefix='/api/v1/meals')
 app.register_blueprint(user, url_prefix='/user')
