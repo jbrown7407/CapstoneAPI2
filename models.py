@@ -9,7 +9,8 @@ if 'ON_HEROKU' in os.environ:
     DATABASE = connect(os.eviron.get('HEROKU_POSTGRESQL_RED_URL'))
 else:
   
-    DATABASE = PostgresqlDatabase('meals.sqlite')
+    # DATABASE = PostgresqlDatabase('meals.sqlite')
+    DATABASE = SqliteDatabase('meals.sqlite')
 
 #acccessingg correct DB?
 
