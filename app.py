@@ -24,7 +24,7 @@ CORS(app)
 app.secret_key = "asdfasdfasdfasdfasdfasdf"
 login_manager.init_app(app)
 
-logging.getLogger('flask_cors').level = logging.DEBUG
+
 
 @login_manager.user_loader
 def load_user(userid):
