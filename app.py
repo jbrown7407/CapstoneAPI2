@@ -81,11 +81,11 @@ if __name__ == '__main__':
   models.initialize()
   app.run(debug=DEBUG, port=PORT)
 
-
 if 'ON_HEROKU' in os.environ:
-          print('\non heroku!')
-          models.initialize()                     
-          # DATABASE = connect(os.environ.get('DATABASE_URL')) 
-                                                  
-# else:
-#   DATABASE = PostgresqlDatabase('meals.sqlite')
+    DATABASE = connect(os.eviron.get('HEROKU_POSTGRESQL_RED_URL'))
+else:
+    DATABASE = {'meals.sqlite'}
+
+if 'ON_HEROKU' in os.environ: 
+  print('\non heroku!')
+  models.initialize()
