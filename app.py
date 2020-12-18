@@ -48,7 +48,7 @@ def after_request(response):
 
 CORS(meal, origins=['*'], supports_credentials=True)
 CORS(user, origins=['*'], supports_credentials=True)
-CORS(app, origins=['http://localhost:3000', 'https://dinnder-react.herokuapp.com'], supports_credentials=True)
+CORS(app, origins=['http://localhost:3000', 'https://dinnder-api.herokuapp.com/api/v1/meals' 'https://dinnder-react.herokuapp.com'], supports_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={
     r'/*': {
@@ -76,16 +76,14 @@ def hello(username):
 # def show_post(post_id);
 # show post with given id, return post %d
 
+
+if 'ON_HEROKU' in os.environ: 
+  print('on heroku!')
+  models.initialize()
 # Run the app when the program starts!
 if __name__ == '__main__':
   models.initialize()
   app.run(debug=DEBUG, port=PORT)
 
-if 'ON_HEROKU' in os.environ:
-    DATABASE = connect(os.eviron.get('HEROKU_POSTGRESQL_RED_URL'))
-else:
-    DATABASE = {'meals.sqlite'}
 
-if 'ON_HEROKU' in os.environ: 
-  print('\non heroku!')
-  models.initialize()
+

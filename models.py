@@ -8,7 +8,8 @@ from playhouse.db_url import connect
 if 'ON_HEROKU' in os.environ:
     DATABASE = connect(os.eviron.get('HEROKU_POSTGRESQL_RED_URL'))
 else:
-    DATABASE = {*whatever you already had as your DATABASE*}
+    console.log("models db error")
+    DATABASE = PostgresqlDatabase{'meals.sqlite'}
 
 #acccessingg correct DB?
 
