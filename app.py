@@ -15,6 +15,10 @@ PORT = 8000
 # Initialize an instance of the Flask class.
 # This starts the website! Restored
 app = Flask(__name__)
+app.config.update(
+    SESSION_COOKIE_SECURE=True,
+    SESSION_COOKIE_SAMESITE='None',
+)
 CORS(app)
 Access-Control-Allow-Origin: 'https://dinnder-react.herokuapp.com'
 Access-Control-Allow-Origin: 'https://dinnder-api.herokuapp.com/api/v1/meals/'
