@@ -5,7 +5,9 @@ import os
 
 from playhouse.db_url import connect
 
-DATABASE = PostgresqlDatabase('meals')
+DATABASE = connect(os.environ.get('HEROKU_POSTGRESQL_RED_URL'))
+else:
+      DATABASE = SqliteDatabase('dogs.sqlite')
 
 #acccessingg correct DB?
 
