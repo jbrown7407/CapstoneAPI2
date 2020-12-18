@@ -20,9 +20,7 @@ app.config.update(
     SESSION_COOKIE_SAMESITE='None',
 )
 CORS(app)
-Access-Control-Allow-Origin: 'https://dinnder-react.herokuapp.com'
-Access-Control-Allow-Origin: 'https://dinnder-api.herokuapp.com/api/v1/meals/'
-Vary: Origin
+
 app.secret_key = "asdfasdfasdfasdfasdfasdf"
 login_manager.init_app(app)
 
@@ -57,6 +55,16 @@ def after_request(response):
 
 CORS(meal, origins=['*'], supports_credentials=True)
 CORS(user, origins=['*'], supports_credentials=True)
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={
+    r'/*': {
+        'origins': '*'
+    }
+})
+Access-Control-Allow-Origin: 'https://dinnder-react.herokuapp.com'
+Access-Control-Allow-Origin: 'https://dinnder-api.herokuapp.com/api/v1/meals/'
+Vary: Origin
+
 
 app.register_blueprint(meal, url_prefix='/api/v1/meals')
 app.register_blueprint(user, url_prefix='/user')
