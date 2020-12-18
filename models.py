@@ -5,9 +5,10 @@ import os
 
 from playhouse.db_url import connect
 
-DATABASE = connect(os.environ.get('HEROKU_POSTGRESQL_RED_URL'))
+if 'ON_HEROKU' in os.environ:
+    DATABASE = connect(os.eviron.get('HEROKU_POSTGRESQL_RED_URL'))
 else:
-      DATABASE = SqliteDatabase('dogs.sqlite')
+    DATABASE = {*whatever you already had as your DATABASE*}
 
 #acccessingg correct DB?
 
