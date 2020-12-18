@@ -25,13 +25,6 @@ app.secret_key = "asdfasdfasdfasdfasdfasdf"
 login_manager.init_app(app)
 
 
-if 'ON_HEROKU' in os.environ:
-          print('\non heroku!')
-          models.initialize()                     
-          # DATABASE = connect(os.environ.get('DATABASE_URL')) 
-                                                  
-# else:
-#   DATABASE = PostgresqlDatabase('meals.sqlite')
 
 @login_manager.user_loader
 def load_user(userid):
@@ -61,10 +54,9 @@ cors = CORS(app, resources={
         'origins': '*'
     }
 })
-Access-Control-Allow-Origin: 'https://dinnder-react.herokuapp.com'
-Access-Control-Allow-Origin: 'https://dinnder-api.herokuapp.com/api/v1/meals/'
-Vary: Origin
-
+# Access-Control-Allow-Origin: 'https://dinnder-react.herokuapp.com'
+# Access-Control-Allow-Origin: 'https://dinnder-api.herokuapp.com/api/v1/meals/'
+# Vary: Origin
 
 app.register_blueprint(meal, url_prefix='/api/v1/meals')
 app.register_blueprint(user, url_prefix='/user')
@@ -87,3 +79,12 @@ def hello(username):
 if __name__ == '__main__':
   models.initialize()
   app.run(debug=DEBUG, port=PORT)
+
+
+if 'ON_HEROKU' in os.environ:
+          print('\non heroku!')
+          models.initialize()                     
+          # DATABASE = connect(os.environ.get('DATABASE_URL')) 
+                                                  
+# else:
+#   DATABASE = PostgresqlDatabase('meals.sqlite')
