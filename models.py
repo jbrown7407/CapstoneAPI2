@@ -12,7 +12,7 @@ else:
     # DATABASE = PostgresqlDatabase('meals.sqlite')
     DATABASE = SqliteDatabase('meals.sqlite')
 
-#acccessingg correct DB?
+#acccessingg correct DB?...
 
 class User(UserMixin, Model):
     id = CharField(unique=True)
